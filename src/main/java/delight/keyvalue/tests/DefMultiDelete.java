@@ -32,7 +32,15 @@ public class DefMultiDelete implements StoreTest {
       }
     };
     Async.<Success>waitFor(_function_1);
-    final Operation<Object> _function_2 = new Operation<Object>() {
+    final Operation<Success> _function_2 = new Operation<Success>() {
+      @Override
+      public void apply(final ValueCallback<Success> callback) {
+        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
+        store.commit(_asSimpleCallback);
+      }
+    };
+    Async.<Success>waitFor(_function_2);
+    final Operation<Object> _function_3 = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
         StoreOperation<String, Object> _count = StoreOperations.<String, Object>count("");
@@ -51,8 +59,8 @@ public class DefMultiDelete implements StoreTest {
         store.performOperation(_count, _embed);
       }
     };
-    Async.<Object>waitFor(_function_2);
-    final Operation<Object> _function_3 = new Operation<Object>() {
+    Async.<Object>waitFor(_function_3);
+    final Operation<Object> _function_4 = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
         StoreOperation<String, Object> _removeAll = StoreOperations.<String, Object>removeAll("node/");
@@ -66,8 +74,8 @@ public class DefMultiDelete implements StoreTest {
         store.performOperation(_removeAll, _embed);
       }
     };
-    Async.<Object>waitFor(_function_3);
-    final Operation<Object> _function_4 = new Operation<Object>() {
+    Async.<Object>waitFor(_function_4);
+    final Operation<Object> _function_5 = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
         StoreOperation<String, Object> _count = StoreOperations.<String, Object>count("");
@@ -86,6 +94,6 @@ public class DefMultiDelete implements StoreTest {
         store.performOperation(_count, _embed);
       }
     };
-    Async.<Object>waitFor(_function_4);
+    Async.<Object>waitFor(_function_5);
   }
 }

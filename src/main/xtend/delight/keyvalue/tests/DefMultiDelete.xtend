@@ -21,6 +21,10 @@ class DefMultiDelete implements StoreTest {
 		]
 		
 		Async.waitFor [ callback |
+			store.commit(AsyncCommon.asSimpleCallback(callback))
+		]
+		
+		Async.waitFor [ callback |
 
 			store.performOperation(StoreOperations.count(""), AsyncCommon.embed(callback, [ count |
 				
