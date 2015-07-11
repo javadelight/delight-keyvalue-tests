@@ -8,7 +8,6 @@ import delight.keyvalue.Stores
 
 class DefPut implements StoreTest {
 
-	
 	override void test(Store<String, Object> store) {
 
 		val map = Stores.enforceAsynchronousPut(10, new JreConcurrency(),

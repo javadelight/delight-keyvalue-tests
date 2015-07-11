@@ -27,8 +27,7 @@ class StoreTests {
 		return #[
 			new DefMultiDelete,
 			new DefMultiSelect,
-			new DefPut,
-			new TestThatParellelWorkerProcessesPuts
+			new DefPut
 		]
 	}
 
