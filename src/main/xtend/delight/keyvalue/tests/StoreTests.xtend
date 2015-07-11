@@ -27,9 +27,10 @@ class StoreTests {
 
 	def static List<StoreTest> all() {
 		return #[
+			new DefPut,
 			new DefMultiDelete,
-			new DefMultiSelect,
-			new DefPut
+			new DefMultiSelect
+			
 		]
 	}
 
