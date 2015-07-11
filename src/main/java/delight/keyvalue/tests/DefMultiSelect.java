@@ -42,9 +42,9 @@ public class DefMultiSelect implements StoreTest {
       }
     };
     Async.<Success>waitFor(_function_2);
-    final Operation<Success> _function_3 = new Operation<Success>() {
+    final Operation<Object> _function_3 = new Operation<Object>() {
       @Override
-      public void apply(final ValueCallback<Success> callback) {
+      public void apply(final ValueCallback<Object> callback) {
         final Value<Integer> count = new Value<Integer>(Integer.valueOf(0));
         final Closure<StoreEntry<String, Object>> _function = new Closure<StoreEntry<String, Object>>() {
           @Override
@@ -55,7 +55,6 @@ public class DefMultiSelect implements StoreTest {
             Integer _get_1 = count.get();
             boolean _equals = ((_get_1).intValue() == 3);
             if (_equals) {
-              callback.onSuccess(Success.INSTANCE);
             }
           }
         };
@@ -63,12 +62,13 @@ public class DefMultiSelect implements StoreTest {
         final Closure<Object> _function_1 = new Closure<Object>() {
           @Override
           public void apply(final Object it) {
+            callback.onSuccess(Success.INSTANCE);
           }
         };
         ValueCallback<Object> _embed = AsyncCommon.<Object>embed(callback, _function_1);
         store.performOperation(_all, _embed);
       }
     };
-    Async.<Success>waitFor(_function_3);
+    Async.<Object>waitFor(_function_3);
   }
 }

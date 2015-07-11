@@ -33,10 +33,10 @@ class DefMultiSelect implements StoreTest  {
 			store.performOperation(StoreOperations.getAll("node/", [ e |
 				count.set(count.get()+1)
 				if (count.get() == 3) {
-					callback.onSuccess(Success.INSTANCE)
+					
 				}
 			]), AsyncCommon.embed(callback, [
-				
+				callback.onSuccess(Success.INSTANCE)
 			]));
 
 		]
