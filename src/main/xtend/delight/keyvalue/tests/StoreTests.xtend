@@ -23,14 +23,7 @@ class StoreTests {
 		}
 	}
 	
-	def static void test(Function<Void, Store<String, Object>> factory) {
-		for (test : all()) {
-			val store = factory.apply(null)
-			
-			test.test(store)
-			
-		}
-	}
+	
 
 	def static List<StoreTest> all() {
 		return #[

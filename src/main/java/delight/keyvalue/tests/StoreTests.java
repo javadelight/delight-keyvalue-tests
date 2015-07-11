@@ -44,16 +44,6 @@ public class StoreTests {
     }
   }
   
-  public static void test(final Function<Void, Store<String, Object>> factory) {
-    List<StoreTest> _all = StoreTests.all();
-    for (final StoreTest test : _all) {
-      {
-        final Store<String, Object> store = factory.apply(null);
-        test.test(store);
-      }
-    }
-  }
-  
   public static List<StoreTest> all() {
     DefMultiDelete _defMultiDelete = new DefMultiDelete();
     DefMultiSelect _defMultiSelect = new DefMultiSelect();
