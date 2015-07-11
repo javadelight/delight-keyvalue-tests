@@ -28,15 +28,15 @@ class DefMultiSelect implements StoreTest  {
 		
 		
 		Async.waitFor [ callback |
-			
 			val count = new Value(0)
 			store.performOperation(StoreOperations.getAll("node/", [ e |
 				count.set(count.get()+1)
+				println(count)
 				if (count.get() == 3) {
-					
+					callback.onSuccess(Success.INSTANCE)
 				}
 			]), AsyncCommon.embed(callback, [
-				callback.onSuccess(Success.INSTANCE)
+				println('done')		
 			]));
 
 		]
