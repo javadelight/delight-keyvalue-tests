@@ -10,12 +10,9 @@ class DefPut implements StoreTest {
 
 	override void test(Store<String, Object> store) {
 
-		val map = Stores.enforceAsynchronousPut(10, new JreConcurrency(),
-			store);
+		val map = store
 
-		Async.waitFor [ callback |
-			map.start(AsyncCommon.asSimpleCallback(callback));
-		]
+		
 
 		Async.waitFor [ callback |
 			map.put("1", "one", AsyncCommon.asSimpleCallback(callback));
@@ -25,9 +22,7 @@ class DefPut implements StoreTest {
 			map.put("2", "two", AsyncCommon.asSimpleCallback(callback));
 		]
 
-		Async.waitFor [ callback |
-			map.stop(AsyncCommon.asSimpleCallback(callback));
-		]
+		
 
 	}
 	
