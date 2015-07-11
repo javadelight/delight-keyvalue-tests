@@ -11,7 +11,6 @@ import delight.keyvalue.Store;
 import delight.keyvalue.operations.StoreOperation;
 import delight.keyvalue.operations.StoreOperations;
 import delight.keyvalue.tests.StoreTest;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public class DefMultiDelete implements StoreTest {
@@ -56,7 +55,6 @@ public class DefMultiDelete implements StoreTest {
         final Closure<Object> _function = new Closure<Object>() {
           @Override
           public void apply(final Object count) {
-            InputOutput.<String>println(("here: " + count));
             if (((((Integer) count)).intValue() != 3)) {
               Exception _exception = new Exception("Not created correctly");
               callback.onFailure(_exception);
