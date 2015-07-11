@@ -1,17 +1,16 @@
 package delight.keyvalue.tests
 
-import delight.keyvalue.Stores
-import delight.keyvalue.jre.AsyncMapsJre
 import delight.async.AsyncCommon
 import delight.async.jre.Async
-import org.junit.Test
+import delight.keyvalue.Store
+import delight.keyvalue.jre.AsyncMapsJre
 
-class TestThatParellelWorkerProcessesPuts {
+class TestThatParellelWorkerProcessesPuts implements StoreTest {
 	
-	@Test
-	def void test() {
+
+	override void test(Store<String, Object> store) {
 		
-		val map = AsyncMapsJre.divideWork(4, Stores.hashMap())
+		val map = AsyncMapsJre.divideWork(4, store)
 		
 		
 		Async.waitFor [ callback | 

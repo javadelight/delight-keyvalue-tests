@@ -7,16 +7,14 @@ import delight.async.callbacks.ValueCallback;
 import delight.async.jre.Async;
 import delight.functional.Success;
 import delight.keyvalue.Store;
-import delight.keyvalue.Stores;
 import delight.keyvalue.jre.AsyncMapsJre;
-import org.junit.Test;
+import delight.keyvalue.tests.StoreTest;
 
 @SuppressWarnings("all")
-public class TestThatParellelWorkerProcessesPuts {
-  @Test
-  public void test() {
-    Store<String, String> _hashMap = Stores.<String, String>hashMap();
-    final Store<String, String> map = AsyncMapsJre.<String, String>divideWork(4, _hashMap);
+public class TestThatParellelWorkerProcessesPuts implements StoreTest {
+  @Override
+  public void test(final Store<String, Object> store) {
+    final Store<String, Object> map = AsyncMapsJre.<String, Object>divideWork(4, store);
     final Operation<Success> _function = new Operation<Success>() {
       @Override
       public void apply(final ValueCallback<Success> callback) {

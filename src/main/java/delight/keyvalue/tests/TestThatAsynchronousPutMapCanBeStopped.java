@@ -9,12 +9,14 @@ import delight.concurrency.jre.JreConcurrency;
 import delight.functional.Success;
 import delight.keyvalue.Store;
 import delight.keyvalue.Stores;
+import delight.keyvalue.tests.StoreTest;
 
 @SuppressWarnings("all")
-public class TestThatAsynchronousPutMapCanBeStopped {
-  public void test(final Store<String, String> store) {
+public class TestThatAsynchronousPutMapCanBeStopped implements StoreTest {
+  @Override
+  public void test(final Store<String, Object> store) {
     JreConcurrency _jreConcurrency = new JreConcurrency();
-    final Store<String, String> map = Stores.<String, String>enforceAsynchronousPut(10, _jreConcurrency, store);
+    final Store<String, Object> map = Stores.<String, Object>enforceAsynchronousPut(10, _jreConcurrency, store);
     final Operation<Success> _function = new Operation<Success>() {
       @Override
       public void apply(final ValueCallback<Success> callback) {
