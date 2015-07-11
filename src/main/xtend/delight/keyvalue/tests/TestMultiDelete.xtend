@@ -6,10 +6,10 @@ import delight.functional.Success
 import delight.keyvalue.Store
 import delight.keyvalue.operations.StoreOperations
 
-class TestMultiDelete {
+class TestMultiDelete implements StoreTest {
 	
 	
-	def void test(Store<String, Object> store) {
+	override void test(Store<String, Object> store) {
 		
 		Async.waitFor [ callback |
 			store.start(AsyncCommon.asSimpleCallback(callback));

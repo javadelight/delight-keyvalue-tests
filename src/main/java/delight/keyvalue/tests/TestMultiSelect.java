@@ -12,9 +12,11 @@ import delight.keyvalue.Store;
 import delight.keyvalue.StoreEntry;
 import delight.keyvalue.operations.StoreOperation;
 import delight.keyvalue.operations.StoreOperations;
+import delight.keyvalue.tests.StoreTest;
 
 @SuppressWarnings("all")
-public class TestMultiSelect {
+public class TestMultiSelect implements StoreTest {
+  @Override
   public void test(final Store<String, Object> store) {
     final Operation<Success> _function = new Operation<Success>() {
       @Override
