@@ -29,7 +29,7 @@ class DefMultiDelete implements StoreTest {
 		Async.waitFor [ callback |
 
 			store.performOperation(StoreOperations.count(""), AsyncCommon.embed(callback, [ count |
-				
+				println("here: "+count)
 				if (count as Integer != 3) {
 					callback.onFailure(new Exception('Not created correctly'))
 					return
