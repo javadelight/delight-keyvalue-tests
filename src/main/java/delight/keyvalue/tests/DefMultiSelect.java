@@ -47,6 +47,7 @@ public class DefMultiSelect implements StoreTest {
       @Override
       public void apply(final ValueCallback<Success> callback) {
         final Value<Integer> count = new Value<Integer>(Integer.valueOf(0));
+        InputOutput.<String>println("try");
         final Closure<StoreEntry<String, Object>> _function = new Closure<StoreEntry<String, Object>>() {
           @Override
           public void apply(final StoreEntry<String, Object> e) {
