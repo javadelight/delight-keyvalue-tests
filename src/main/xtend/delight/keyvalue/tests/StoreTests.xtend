@@ -25,9 +25,9 @@ class StoreTests {
 
 	def static List<StoreTest> all() {
 		return #[
-			new TestMultiDelete,
-			new TestMultiSelect,
-			new TestThatAsynchronousPutMapCanBeStopped,
+			new DefMultiDelete,
+			new DefMultiSelect,
+			new DefPut,
 			new TestThatParellelWorkerProcessesPuts
 		]
 	}

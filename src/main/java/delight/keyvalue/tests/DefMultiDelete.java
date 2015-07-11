@@ -13,7 +13,7 @@ import delight.keyvalue.operations.StoreOperations;
 import delight.keyvalue.tests.StoreTest;
 
 @SuppressWarnings("all")
-public class TestMultiDelete implements StoreTest {
+public class DefMultiDelete implements StoreTest {
   @Override
   public void test(final Store<String, Object> store) {
     final Operation<Success> _function = new Operation<Success>() {

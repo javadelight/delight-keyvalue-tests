@@ -7,7 +7,7 @@ import delight.functional.Success
 import delight.keyvalue.Store
 import delight.keyvalue.operations.StoreOperations
 
-class TestMultiSelect implements StoreTest  {
+class DefMultiSelect implements StoreTest  {
 	
 	
 	override void test(Store<String, Object> store) {

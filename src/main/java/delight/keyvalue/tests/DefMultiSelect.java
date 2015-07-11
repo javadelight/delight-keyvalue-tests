@@ -2,26 +2,27 @@ package delight.keyvalue.tests;
 
 import delight.async.AsyncCommon;
 import delight.async.Operation;
+import delight.async.Value;
 import delight.async.callbacks.SimpleCallback;
 import delight.async.callbacks.ValueCallback;
 import delight.async.jre.Async;
-import delight.concurrency.jre.JreConcurrency;
+import delight.functional.Closure;
 import delight.functional.Success;
 import delight.keyvalue.Store;
-import delight.keyvalue.Stores;
+import delight.keyvalue.StoreEntry;
+import delight.keyvalue.operations.StoreOperation;
+import delight.keyvalue.operations.StoreOperations;
 import delight.keyvalue.tests.StoreTest;
 
 @SuppressWarnings("all")
-public class TestThatAsynchronousPutMapCanBeStopped implements StoreTest {
+public class DefMultiSelect implements StoreTest {
   @Override
   public void test(final Store<String, Object> store) {
-    JreConcurrency _jreConcurrency = new JreConcurrency();
-    final Store<String, Object> map = Stores.<String, Object>enforceAsynchronousPut(10, _jreConcurrency, store);
     final Operation<Success> _function = new Operation<Success>() {
       @Override
       public void apply(final ValueCallback<Success> callback) {
         SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        map.start(_asSimpleCallback);
+        store.put("node/child1", "one", _asSimpleCallback);
       }
     };
     Async.<Success>waitFor(_function);
@@ -29,7 +30,7 @@ public class TestThatAsynchronousPutMapCanBeStopped implements StoreTest {
       @Override
       public void apply(final ValueCallback<Success> callback) {
         SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        map.put("1", "one", _asSimpleCallback);
+        store.put("node/child2", "two", _asSimpleCallback);
       }
     };
     Async.<Success>waitFor(_function_1);
@@ -37,15 +38,35 @@ public class TestThatAsynchronousPutMapCanBeStopped implements StoreTest {
       @Override
       public void apply(final ValueCallback<Success> callback) {
         SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        map.put("2", "two", _asSimpleCallback);
+        store.put("node/child3", "three", _asSimpleCallback);
       }
     };
     Async.<Success>waitFor(_function_2);
     final Operation<Success> _function_3 = new Operation<Success>() {
       @Override
       public void apply(final ValueCallback<Success> callback) {
-        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        map.stop(_asSimpleCallback);
+        final Value<Integer> count = new Value<Integer>(Integer.valueOf(0));
+        final Closure<StoreEntry<String, Object>> _function = new Closure<StoreEntry<String, Object>>() {
+          @Override
+          public void apply(final StoreEntry<String, Object> e) {
+            Integer _get = count.get();
+            int _plus = ((_get).intValue() + 1);
+            count.set(Integer.valueOf(_plus));
+            Integer _get_1 = count.get();
+            boolean _equals = ((_get_1).intValue() == 3);
+            if (_equals) {
+              callback.onSuccess(Success.INSTANCE);
+            }
+          }
+        };
+        StoreOperation<String, Object> _all = StoreOperations.<String, Object>getAll("node/", _function);
+        final Closure<Object> _function_1 = new Closure<Object>() {
+          @Override
+          public void apply(final Object it) {
+          }
+        };
+        ValueCallback<Object> _embed = AsyncCommon.<Object>embed(callback, _function_1);
+        store.performOperation(_all, _embed);
       }
     };
     Async.<Success>waitFor(_function_3);

@@ -6,7 +6,7 @@ import delight.functional.Success
 import delight.keyvalue.Store
 import delight.keyvalue.operations.StoreOperations
 
-class TestMultiDelete implements StoreTest {
+class DefMultiDelete implements StoreTest {
 	
 	
 	override void test(Store<String, Object> store) {

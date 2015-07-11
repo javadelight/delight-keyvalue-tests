@@ -8,10 +8,10 @@ import delight.async.jre.Async;
 import delight.functional.Function;
 import delight.functional.Success;
 import delight.keyvalue.Store;
+import delight.keyvalue.tests.DefMultiDelete;
+import delight.keyvalue.tests.DefMultiSelect;
 import delight.keyvalue.tests.StoreTest;
-import delight.keyvalue.tests.TestMultiDelete;
-import delight.keyvalue.tests.TestMultiSelect;
-import delight.keyvalue.tests.TestThatAsynchronousPutMapCanBeStopped;
+import delight.keyvalue.tests.DefPut;
 import delight.keyvalue.tests.TestThatParellelWorkerProcessesPuts;
 import java.util.Collections;
 import java.util.List;
@@ -46,10 +46,10 @@ public class StoreTests {
   }
   
   public static List<StoreTest> all() {
-    TestMultiDelete _testMultiDelete = new TestMultiDelete();
-    TestMultiSelect _testMultiSelect = new TestMultiSelect();
-    TestThatAsynchronousPutMapCanBeStopped _testThatAsynchronousPutMapCanBeStopped = new TestThatAsynchronousPutMapCanBeStopped();
+    DefMultiDelete _defMultiDelete = new DefMultiDelete();
+    DefMultiSelect _defMultiSelect = new DefMultiSelect();
+    DefPut _testThatAsynchronousPutMapCanBeStopped = new DefPut();
     TestThatParellelWorkerProcessesPuts _testThatParellelWorkerProcessesPuts = new TestThatParellelWorkerProcessesPuts();
-    return Collections.<StoreTest>unmodifiableList(CollectionLiterals.<StoreTest>newArrayList(_testMultiDelete, _testMultiSelect, _testThatAsynchronousPutMapCanBeStopped, _testThatParellelWorkerProcessesPuts));
+    return Collections.<StoreTest>unmodifiableList(CollectionLiterals.<StoreTest>newArrayList(_defMultiDelete, _defMultiSelect, _testThatAsynchronousPutMapCanBeStopped, _testThatParellelWorkerProcessesPuts));
   }
 }

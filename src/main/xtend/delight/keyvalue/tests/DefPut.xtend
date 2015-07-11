@@ -6,7 +6,7 @@ import delight.concurrency.jre.JreConcurrency
 import delight.keyvalue.Store
 import delight.keyvalue.Stores
 
-class TestThatAsynchronousPutMapCanBeStopped implements StoreTest {
+class DefPut implements StoreTest {
 
 	
 	override void test(Store<String, Object> store) {
