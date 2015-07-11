@@ -11,9 +11,7 @@ class TestMultiSelect {
 	
 	
 	def void test(Store<String, Object> store) {
-		
-		
-		
+
 		Async.waitFor [ callback |
 			store.start(AsyncCommon.asSimpleCallback(callback));
 		]
