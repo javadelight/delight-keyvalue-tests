@@ -11,14 +11,7 @@ class TestMultiDelete implements StoreTest {
 	
 	override void test(Store<String, Object> store) {
 		
-		Async.waitFor [ callback |
-			store.start(AsyncCommon.asSimpleCallback(callback));
-		]
-	
-		Async.waitFor [ callback |
-			store.put("node/child1", "one", AsyncCommon.asSimpleCallback(callback));
-		]
-
+		
 		Async.waitFor [ callback |
 			store.put("node/child2", "two", AsyncCommon.asSimpleCallback(callback));
 		]
@@ -64,9 +57,7 @@ class TestMultiDelete implements StoreTest {
 
 		]
 	
-		Async.waitFor [ callback |
-			store.stop(AsyncCommon.asSimpleCallback(callback));
-		]
+	
 		
 	}
 	

@@ -22,7 +22,7 @@ public class TestMultiSelect implements StoreTest {
       @Override
       public void apply(final ValueCallback<Success> callback) {
         SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        store.start(_asSimpleCallback);
+        store.put("node/child1", "one", _asSimpleCallback);
       }
     };
     Async.<Success>waitFor(_function);
@@ -30,7 +30,7 @@ public class TestMultiSelect implements StoreTest {
       @Override
       public void apply(final ValueCallback<Success> callback) {
         SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        store.put("node/child1", "one", _asSimpleCallback);
+        store.put("node/child2", "two", _asSimpleCallback);
       }
     };
     Async.<Success>waitFor(_function_1);
@@ -38,19 +38,11 @@ public class TestMultiSelect implements StoreTest {
       @Override
       public void apply(final ValueCallback<Success> callback) {
         SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        store.put("node/child2", "two", _asSimpleCallback);
+        store.put("node/child3", "three", _asSimpleCallback);
       }
     };
     Async.<Success>waitFor(_function_2);
     final Operation<Success> _function_3 = new Operation<Success>() {
-      @Override
-      public void apply(final ValueCallback<Success> callback) {
-        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        store.put("node/child3", "three", _asSimpleCallback);
-      }
-    };
-    Async.<Success>waitFor(_function_3);
-    final Operation<Success> _function_4 = new Operation<Success>() {
       @Override
       public void apply(final ValueCallback<Success> callback) {
         final Value<Integer> count = new Value<Integer>(Integer.valueOf(0));
@@ -77,14 +69,6 @@ public class TestMultiSelect implements StoreTest {
         store.performOperation(_all, _embed);
       }
     };
-    Async.<Success>waitFor(_function_4);
-    final Operation<Success> _function_5 = new Operation<Success>() {
-      @Override
-      public void apply(final ValueCallback<Success> callback) {
-        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        store.stop(_asSimpleCallback);
-      }
-    };
-    Async.<Success>waitFor(_function_5);
+    Async.<Success>waitFor(_function_3);
   }
 }

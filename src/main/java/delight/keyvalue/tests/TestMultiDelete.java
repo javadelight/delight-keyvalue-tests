@@ -20,7 +20,7 @@ public class TestMultiDelete implements StoreTest {
       @Override
       public void apply(final ValueCallback<Success> callback) {
         SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        store.start(_asSimpleCallback);
+        store.put("node/child2", "two", _asSimpleCallback);
       }
     };
     Async.<Success>waitFor(_function);
@@ -28,27 +28,11 @@ public class TestMultiDelete implements StoreTest {
       @Override
       public void apply(final ValueCallback<Success> callback) {
         SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        store.put("node/child1", "one", _asSimpleCallback);
-      }
-    };
-    Async.<Success>waitFor(_function_1);
-    final Operation<Success> _function_2 = new Operation<Success>() {
-      @Override
-      public void apply(final ValueCallback<Success> callback) {
-        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        store.put("node/child2", "two", _asSimpleCallback);
-      }
-    };
-    Async.<Success>waitFor(_function_2);
-    final Operation<Success> _function_3 = new Operation<Success>() {
-      @Override
-      public void apply(final ValueCallback<Success> callback) {
-        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
         store.put("node/child3", "three", _asSimpleCallback);
       }
     };
-    Async.<Success>waitFor(_function_3);
-    final Operation<Object> _function_4 = new Operation<Object>() {
+    Async.<Success>waitFor(_function_1);
+    final Operation<Object> _function_2 = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
         StoreOperation<String, Object> _count = StoreOperations.<String, Object>count("");
@@ -67,8 +51,8 @@ public class TestMultiDelete implements StoreTest {
         store.performOperation(_count, _embed);
       }
     };
-    Async.<Object>waitFor(_function_4);
-    final Operation<Object> _function_5 = new Operation<Object>() {
+    Async.<Object>waitFor(_function_2);
+    final Operation<Object> _function_3 = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
         StoreOperation<String, Object> _removeAll = StoreOperations.<String, Object>removeAll("node/");
@@ -82,8 +66,8 @@ public class TestMultiDelete implements StoreTest {
         store.performOperation(_removeAll, _embed);
       }
     };
-    Async.<Object>waitFor(_function_5);
-    final Operation<Object> _function_6 = new Operation<Object>() {
+    Async.<Object>waitFor(_function_3);
+    final Operation<Object> _function_4 = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
         StoreOperation<String, Object> _count = StoreOperations.<String, Object>count("");
@@ -102,14 +86,6 @@ public class TestMultiDelete implements StoreTest {
         store.performOperation(_count, _embed);
       }
     };
-    Async.<Object>waitFor(_function_6);
-    final Operation<Success> _function_7 = new Operation<Success>() {
-      @Override
-      public void apply(final ValueCallback<Success> callback) {
-        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        store.stop(_asSimpleCallback);
-      }
-    };
-    Async.<Success>waitFor(_function_7);
+    Async.<Object>waitFor(_function_4);
   }
 }
