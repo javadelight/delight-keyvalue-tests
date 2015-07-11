@@ -8,7 +8,7 @@ import java.util.List
 
 class StoreTests {
 
-	def static void testAll(Function<Void, Store<String, Object>> factory) {
+	def static void testAndStartAndStop(Function<Void, Store<String, Object>> factory) {
 		for (test : all()) {
 			val store = factory.apply(null)
 			Async.waitFor [ callback |
@@ -20,6 +20,15 @@ class StoreTests {
 			Async.waitFor [ callback |
 				store.stop(AsyncCommon.asSimpleCallback(callback));
 			]
+		}
+	}
+	
+	def static void test(Function<Void, Store<String, Object>> factory) {
+		for (test : all()) {
+			val store = factory.apply(null)
+			
+			test.test(store)
+			
 		}
 	}
 

@@ -18,7 +18,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 
 @SuppressWarnings("all")
 public class StoreTests {
-  public static void testAll(final Function<Void, Store<String, Object>> factory) {
+  public static void testAndStartAndStop(final Function<Void, Store<String, Object>> factory) {
     List<StoreTest> _all = StoreTests.all();
     for (final StoreTest test : _all) {
       {
@@ -40,6 +40,16 @@ public class StoreTests {
           }
         };
         Async.<Success>waitFor(_function_1);
+      }
+    }
+  }
+  
+  public static void test(final Function<Void, Store<String, Object>> factory) {
+    List<StoreTest> _all = StoreTests.all();
+    for (final StoreTest test : _all) {
+      {
+        final Store<String, Object> store = factory.apply(null);
+        test.test(store);
       }
     }
   }

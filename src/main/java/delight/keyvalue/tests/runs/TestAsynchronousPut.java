@@ -19,6 +19,6 @@ public class TestAsynchronousPut {
         return Stores.<String, Object>enforceAsynchronousPut(10, _jreConcurrency, _hashMap);
       }
     };
-    StoreTests.testAll(_function);
+    StoreTests.testAndStartAndStop(_function);
   }
 }

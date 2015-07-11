@@ -8,7 +8,7 @@ import org.junit.Test
 class TestAsynchronousPut {
 	@Test
 	def void test() {
-		StoreTests.testAll [
+		StoreTests.testAndStartAndStop [
 			 Stores.enforceAsynchronousPut(10, new JreConcurrency(),
 			Stores.hashMap);
 		]

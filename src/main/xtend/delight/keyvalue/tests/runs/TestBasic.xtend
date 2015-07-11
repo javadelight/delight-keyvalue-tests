@@ -7,7 +7,7 @@ import org.junit.Test
 class TestBasic {
 	@Test
 	def void test() {
-		StoreTests.testAll [
+		StoreTests.testAndStartAndStop [
 			 Stores.hashMap
 		]
 	}

@@ -18,6 +18,6 @@ public class TestDivideWork {
         return AsyncMapsJre.<String, Object>divideWork(4, _hashMap);
       }
     };
-    StoreTests.testAll(_function);
+    StoreTests.testAndStartAndStop(_function);
   }
 }

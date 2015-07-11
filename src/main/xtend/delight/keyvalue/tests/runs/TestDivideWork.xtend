@@ -9,7 +9,7 @@ class TestDivideWork {
 	
 	@Test
 	def void test() {
-		StoreTests.testAll [
+		StoreTests.testAndStartAndStop [
 			AsyncMapsJre.divideWork(4, Stores.hashMap)
 		]
 	}

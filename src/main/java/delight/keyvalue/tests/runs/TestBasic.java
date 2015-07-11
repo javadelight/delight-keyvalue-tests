@@ -16,6 +16,6 @@ public class TestBasic {
         return Stores.<String, Object>hashMap();
       }
     };
-    StoreTests.testAll(_function);
+    StoreTests.testAndStartAndStop(_function);
   }
 }
