@@ -29,8 +29,8 @@ class StoreTests {
 		return #[
 			new DefPut,
 			new DefMultiDelete,
-			new DefMultiSelect,
-			new DefConcurrentGet
+			new DefMultiSelect
+			
 			
 		]
 	}

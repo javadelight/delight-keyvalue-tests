@@ -8,7 +8,6 @@ import delight.async.jre.Async;
 import delight.functional.Function;
 import delight.functional.Success;
 import delight.keyvalue.Store;
-import delight.keyvalue.tests.DefConcurrentGet;
 import delight.keyvalue.tests.DefMultiDelete;
 import delight.keyvalue.tests.DefMultiSelect;
 import delight.keyvalue.tests.DefPut;
@@ -49,7 +48,6 @@ public class StoreTests {
     DefPut _defPut = new DefPut();
     DefMultiDelete _defMultiDelete = new DefMultiDelete();
     DefMultiSelect _defMultiSelect = new DefMultiSelect();
-    DefConcurrentGet _defConcurrentGet = new DefConcurrentGet();
-    return Collections.<StoreTest>unmodifiableList(CollectionLiterals.<StoreTest>newArrayList(_defPut, _defMultiDelete, _defMultiSelect, _defConcurrentGet));
+    return Collections.<StoreTest>unmodifiableList(CollectionLiterals.<StoreTest>newArrayList(_defPut, _defMultiDelete, _defMultiSelect));
   }
 }
