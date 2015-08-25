@@ -1,11 +1,11 @@
 package delight.keyvalue.tests
 
 import delight.async.AsyncCommon
-import delight.async.Value
 import delight.async.jre.Async
-import delight.functional.Success
 import delight.keyvalue.Store
 import delight.keyvalue.operations.StoreOperations
+import java.util.List
+import delight.functional.Success
 
 class DefMultiSelect implements StoreTest  {
 	
@@ -28,10 +28,16 @@ class DefMultiSelect implements StoreTest  {
 		
 		
 		Async.waitFor [ callback |
-			val count = new Value(0)
 			
 			store.performOperation(StoreOperations.getAll("node/", 0, 100), 
-				AsyncCommon.embed(callback, [ res |])))
+				AsyncCommon.embed(callback, [ res |
+					if ((res as List<Object>).size() != 3) {
+						callback.onFailure(new Exception("Invalid number of results."))
+						return
+					}
+					
+					callback.onSuccess(Success.INSTANCE)
+				]))
 					
 			
 
