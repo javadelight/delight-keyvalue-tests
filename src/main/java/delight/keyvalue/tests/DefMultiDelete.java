@@ -20,7 +20,7 @@ public class DefMultiDelete implements StoreTest {
       @Override
       public void apply(final ValueCallback<Success> callback) {
         SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        store.put("node/child1", "one", _asSimpleCallback);
+        store.put("https://localhost:12012/node/child1", "one", _asSimpleCallback);
       }
     };
     Async.<Success>waitFor(_function);
@@ -28,7 +28,7 @@ public class DefMultiDelete implements StoreTest {
       @Override
       public void apply(final ValueCallback<Success> callback) {
         SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        store.put("node/child2", "two", _asSimpleCallback);
+        store.put("https://localhost:12012/node/child2", "two", _asSimpleCallback);
       }
     };
     Async.<Success>waitFor(_function_1);
@@ -36,7 +36,7 @@ public class DefMultiDelete implements StoreTest {
       @Override
       public void apply(final ValueCallback<Success> callback) {
         SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
-        store.put("node/child3", "three", _asSimpleCallback);
+        store.put("https://localhost:12012/node/child3", "three", _asSimpleCallback);
       }
     };
     Async.<Success>waitFor(_function_2);
@@ -51,7 +51,7 @@ public class DefMultiDelete implements StoreTest {
     final Operation<Object> _function_4 = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
-        StoreOperation<String, Object> _count = StoreOperations.<String, Object>count("");
+        StoreOperation<String, Object> _count = StoreOperations.<String, Object>count("https://localhost:12012/");
         final Closure<Object> _function = new Closure<Object>() {
           @Override
           public void apply(final Object count) {
@@ -71,7 +71,7 @@ public class DefMultiDelete implements StoreTest {
     final Operation<Object> _function_5 = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
-        StoreOperation<String, Object> _removeAll = StoreOperations.<String, Object>removeAll("node/");
+        StoreOperation<String, Object> _removeAll = StoreOperations.<String, Object>removeAll("https://localhost:12012/node/");
         final Closure<Object> _function = new Closure<Object>() {
           @Override
           public void apply(final Object it) {
@@ -86,7 +86,7 @@ public class DefMultiDelete implements StoreTest {
     final Operation<Object> _function_6 = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
-        StoreOperation<String, Object> _count = StoreOperations.<String, Object>count("");
+        StoreOperation<String, Object> _count = StoreOperations.<String, Object>count("https://localhost:12012/");
         final Closure<Object> _function = new Closure<Object>() {
           @Override
           public void apply(final Object count) {

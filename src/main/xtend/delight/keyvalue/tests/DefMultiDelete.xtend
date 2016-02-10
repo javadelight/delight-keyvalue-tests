@@ -11,15 +11,15 @@ class DefMultiDelete implements StoreTest {
 	
 	override void test(Store<String, Object> store) {
 		Async.waitFor [ callback |
-			store.put("node/child1", "one", AsyncCommon.asSimpleCallback(callback));
+			store.put("https://localhost:12012/node/child1", "one", AsyncCommon.asSimpleCallback(callback));
 		]
 		
 		Async.waitFor [ callback |
-			store.put("node/child2", "two", AsyncCommon.asSimpleCallback(callback));
+			store.put("https://localhost:12012/node/child2", "two", AsyncCommon.asSimpleCallback(callback));
 		]
 		
 		Async.waitFor [ callback |
-			store.put("node/child3", "three", AsyncCommon.asSimpleCallback(callback));
+			store.put("https://localhost:12012/node/child3", "three", AsyncCommon.asSimpleCallback(callback));
 		]
 		
 		Async.waitFor [ callback |
@@ -28,7 +28,7 @@ class DefMultiDelete implements StoreTest {
 		
 		Async.waitFor [ callback |
 
-			store.performOperation(StoreOperations.count(""), AsyncCommon.embed(callback, [ count |
+			store.performOperation(StoreOperations.count("https://localhost:12012/"), AsyncCommon.embed(callback, [ count |
 				
 				if (count as Integer != 3) {
 					callback.onFailure(new Exception('Not created correctly'))
@@ -43,7 +43,7 @@ class DefMultiDelete implements StoreTest {
 		
 		Async.waitFor [ callback |
 
-			store.performOperation(StoreOperations.removeAll("node/"), AsyncCommon.embed(callback, [
+			store.performOperation(StoreOperations.removeAll("https://localhost:12012/node/"), AsyncCommon.embed(callback, [
 				callback.onSuccess(Success.INSTANCE)
 			]));
 
@@ -51,7 +51,7 @@ class DefMultiDelete implements StoreTest {
 		
 		Async.waitFor [ callback |
 
-			store.performOperation(StoreOperations.count(""), AsyncCommon.embed(callback, [ count |
+			store.performOperation(StoreOperations.count("https://localhost:12012/"), AsyncCommon.embed(callback, [ count |
 				if (count as Integer > 0) {
 					callback.onFailure(new Exception('Not deleted correctly'))
 					return
