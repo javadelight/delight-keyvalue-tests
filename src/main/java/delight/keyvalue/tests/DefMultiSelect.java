@@ -12,7 +12,6 @@ import delight.keyvalue.operations.StoreOperation;
 import delight.keyvalue.operations.StoreOperations;
 import delight.keyvalue.tests.StoreTest;
 import java.util.List;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public class DefMultiSelect implements StoreTest {
@@ -49,7 +48,6 @@ public class DefMultiSelect implements StoreTest {
         final Closure<Object> _function = new Closure<Object>() {
           @Override
           public void apply(final Object res) {
-            InputOutput.<List<Object>>println(((List<Object>) res));
             int _size = ((List<Object>) res).size();
             boolean _notEquals = (_size != 3);
             if (_notEquals) {
