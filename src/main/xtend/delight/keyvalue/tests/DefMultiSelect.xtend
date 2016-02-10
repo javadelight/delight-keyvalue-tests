@@ -31,6 +31,9 @@ class DefMultiSelect implements StoreTest  {
 			
 			store.performOperation(StoreOperations.getAll("node/", 0, 100), 
 				AsyncCommon.embed(callback, [ res |
+					
+					println((res as List<Object>))
+					
 					if ((res as List<Object>).size() != 3) {
 						callback.onFailure(new Exception("Invalid number of results."))
 						return
