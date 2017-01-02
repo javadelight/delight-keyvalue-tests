@@ -11,7 +11,6 @@ class DefConcurrentGet implements StoreTest {
 		store.putSync("1", "one");
 		store.putSync("2", "two");
 		store.putSync("3", "three");
-
 		Async.waitFor [ cb |
 			
 			val col = Async.collect(30, cb);

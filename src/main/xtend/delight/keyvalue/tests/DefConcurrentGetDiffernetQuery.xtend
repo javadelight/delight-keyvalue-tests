@@ -13,7 +13,6 @@ class DefConcurrentGetDifferentQuery implements StoreTest {
 		}
 
 		
-
 		Async.waitFor [ cb |
 			
 			val col = Async.collect(50, cb);
