@@ -6,7 +6,6 @@ import delight.async.callbacks.SimpleCallback;
 import delight.async.callbacks.ValueCallback;
 import delight.async.jre.Async;
 import delight.functional.Function;
-import delight.functional.Success;
 import delight.keyvalue.Store;
 import delight.keyvalue.tests.DefMultiDelete;
 import delight.keyvalue.tests.DefMultiSelect;
@@ -23,23 +22,23 @@ public class StoreTests {
     for (final StoreTest test : _all) {
       {
         final Store<String, Object> store = factory.apply(null);
-        final Operation<Success> _function = new Operation<Success>() {
+        final Operation<Object> _function = new Operation<Object>() {
           @Override
-          public void apply(final ValueCallback<Success> callback) {
-            SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
+          public void apply(final ValueCallback<Object> callback) {
+            SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
             store.start(_asSimpleCallback);
           }
         };
-        Async.<Success>waitFor(_function);
+        Async.<Object>waitFor(_function);
         test.test(store);
-        final Operation<Success> _function_1 = new Operation<Success>() {
+        final Operation<Object> _function_1 = new Operation<Object>() {
           @Override
-          public void apply(final ValueCallback<Success> callback) {
-            SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
+          public void apply(final ValueCallback<Object> callback) {
+            SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
             store.stop(_asSimpleCallback);
           }
         };
-        Async.<Success>waitFor(_function_1);
+        Async.<Object>waitFor(_function_1);
       }
     }
   }

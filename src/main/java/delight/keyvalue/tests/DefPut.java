@@ -5,7 +5,6 @@ import delight.async.Operation;
 import delight.async.callbacks.SimpleCallback;
 import delight.async.callbacks.ValueCallback;
 import delight.async.jre.Async;
-import delight.functional.Success;
 import delight.keyvalue.Store;
 import delight.keyvalue.tests.StoreTest;
 
@@ -14,21 +13,21 @@ public class DefPut implements StoreTest {
   @Override
   public void test(final Store<String, Object> store) {
     final Store<String, Object> map = store;
-    final Operation<Success> _function = new Operation<Success>() {
+    final Operation<Object> _function = new Operation<Object>() {
       @Override
-      public void apply(final ValueCallback<Success> callback) {
-        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
+      public void apply(final ValueCallback<Object> callback) {
+        SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
         map.put("1", "one", _asSimpleCallback);
       }
     };
-    Async.<Success>waitFor(_function);
-    final Operation<Success> _function_1 = new Operation<Success>() {
+    Async.<Object>waitFor(_function);
+    final Operation<Object> _function_1 = new Operation<Object>() {
       @Override
-      public void apply(final ValueCallback<Success> callback) {
-        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
+      public void apply(final ValueCallback<Object> callback) {
+        SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
         map.put("2", "two", _asSimpleCallback);
       }
     };
-    Async.<Success>waitFor(_function_1);
+    Async.<Object>waitFor(_function_1);
   }
 }

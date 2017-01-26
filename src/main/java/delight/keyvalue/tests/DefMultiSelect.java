@@ -17,30 +17,30 @@ import java.util.List;
 public class DefMultiSelect implements StoreTest {
   @Override
   public void test(final Store<String, Object> store) {
-    final Operation<Success> _function = new Operation<Success>() {
+    final Operation<Object> _function = new Operation<Object>() {
       @Override
-      public void apply(final ValueCallback<Success> callback) {
-        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
+      public void apply(final ValueCallback<Object> callback) {
+        SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
         store.put("node/child1", "one", _asSimpleCallback);
       }
     };
-    Async.<Success>waitFor(_function);
-    final Operation<Success> _function_1 = new Operation<Success>() {
+    Async.<Object>waitFor(_function);
+    final Operation<Object> _function_1 = new Operation<Object>() {
       @Override
-      public void apply(final ValueCallback<Success> callback) {
-        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
+      public void apply(final ValueCallback<Object> callback) {
+        SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
         store.put("node/child2", "two", _asSimpleCallback);
       }
     };
-    Async.<Success>waitFor(_function_1);
-    final Operation<Success> _function_2 = new Operation<Success>() {
+    Async.<Object>waitFor(_function_1);
+    final Operation<Object> _function_2 = new Operation<Object>() {
       @Override
-      public void apply(final ValueCallback<Success> callback) {
-        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
+      public void apply(final ValueCallback<Object> callback) {
+        SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
         store.put("node/child3", "three", _asSimpleCallback);
       }
     };
-    Async.<Success>waitFor(_function_2);
+    Async.<Object>waitFor(_function_2);
     final Operation<Object> _function_3 = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
@@ -51,7 +51,9 @@ public class DefMultiSelect implements StoreTest {
             int _size = ((List<Object>) res).size();
             boolean _notEquals = (_size != 3);
             if (_notEquals) {
-              Exception _exception = new Exception("Invalid number of results.");
+              int _size_1 = ((List<Object>) res).size();
+              String _plus = ("Invalid number of results. Got " + Integer.valueOf(_size_1));
+              Exception _exception = new Exception(_plus);
               callback.onFailure(_exception);
               return;
             }

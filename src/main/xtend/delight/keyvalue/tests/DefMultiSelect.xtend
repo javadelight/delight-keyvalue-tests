@@ -26,7 +26,7 @@ class DefMultiSelect implements StoreTest  {
 			store.put("node/child3", "three", AsyncCommon.asSimpleCallback(callback));
 		]
 		
-		
+		//Thread.sleep(500)
 		Async.waitFor [ callback |
 			
 			store.performOperation(StoreOperations.getAll("node/", 0, 100), 
@@ -34,7 +34,7 @@ class DefMultiSelect implements StoreTest  {
 					
 					
 					if ((res as List<Object>).size() != 3) {
-						callback.onFailure(new Exception("Invalid number of results."))
+						callback.onFailure(new Exception("Invalid number of results. Got "+(res as List<Object>).size()))
 						return
 					}
 					

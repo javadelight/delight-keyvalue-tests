@@ -16,38 +16,38 @@ import delight.keyvalue.tests.StoreTest;
 public class DefMultiDelete implements StoreTest {
   @Override
   public void test(final Store<String, Object> store) {
-    final Operation<Success> _function = new Operation<Success>() {
+    final Operation<Object> _function = new Operation<Object>() {
       @Override
-      public void apply(final ValueCallback<Success> callback) {
-        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
+      public void apply(final ValueCallback<Object> callback) {
+        SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
         store.put("https://localhost:12012/node/child1", "one", _asSimpleCallback);
       }
     };
-    Async.<Success>waitFor(_function);
-    final Operation<Success> _function_1 = new Operation<Success>() {
+    Async.<Object>waitFor(_function);
+    final Operation<Object> _function_1 = new Operation<Object>() {
       @Override
-      public void apply(final ValueCallback<Success> callback) {
-        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
+      public void apply(final ValueCallback<Object> callback) {
+        SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
         store.put("https://localhost:12012/node/child2", "two", _asSimpleCallback);
       }
     };
-    Async.<Success>waitFor(_function_1);
-    final Operation<Success> _function_2 = new Operation<Success>() {
+    Async.<Object>waitFor(_function_1);
+    final Operation<Object> _function_2 = new Operation<Object>() {
       @Override
-      public void apply(final ValueCallback<Success> callback) {
-        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
+      public void apply(final ValueCallback<Object> callback) {
+        SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
         store.put("https://localhost:12012/node/child3", "three", _asSimpleCallback);
       }
     };
-    Async.<Success>waitFor(_function_2);
-    final Operation<Success> _function_3 = new Operation<Success>() {
+    Async.<Object>waitFor(_function_2);
+    final Operation<Object> _function_3 = new Operation<Object>() {
       @Override
-      public void apply(final ValueCallback<Success> callback) {
-        SimpleCallback _asSimpleCallback = AsyncCommon.asSimpleCallback(callback);
+      public void apply(final ValueCallback<Object> callback) {
+        SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
         store.commit(_asSimpleCallback);
       }
     };
-    Async.<Success>waitFor(_function_3);
+    Async.<Object>waitFor(_function_3);
     final Operation<Object> _function_4 = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
