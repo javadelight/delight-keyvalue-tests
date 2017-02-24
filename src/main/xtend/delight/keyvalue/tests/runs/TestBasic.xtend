@@ -8,7 +8,7 @@ class TestBasic {
 	@Test
 	def void test() {
 		StoreTests.testAndStartAndStop [
-			 Stores.hashMap
+			 Stores. <String, Object> hashMap
 		]
 	}
 }

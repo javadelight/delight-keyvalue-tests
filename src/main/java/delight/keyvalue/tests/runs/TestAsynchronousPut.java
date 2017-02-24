@@ -1,14 +1,24 @@
 package delight.keyvalue.tests.runs;
 
+import delight.concurrency.jre.JreConcurrency;
+import delight.functional.Function;
+import delight.keyvalue.Store;
+import delight.keyvalue.Stores;
+import delight.keyvalue.tests.StoreTests;
 import org.junit.Test;
 
 @SuppressWarnings("all")
 public class TestAsynchronousPut {
   @Test
   public void test() {
-    throw new Error("Unresolved compilation problems:"
-      + "\nBounds mismatch: The type arguments <Comparable<Object>, Object> are not a valid substitute for the bounded type parameters <K extends Comparable<K>, V> of the method hashMap()"
-      + "\nType mismatch: cannot convert from Store<Comparable<Object>, Object> to Store<Comparable<Comparable<Object>>, Object>"
-      + "\nType mismatch: cannot convert from (Void)=>Store<Comparable<Comparable<Object>>, Object> to Function<Void, Store<String, Object>>");
+    final Function<Void, Store<String, Object>> _function = new Function<Void, Store<String, Object>>() {
+      @Override
+      public Store<String, Object> apply(final Void it) {
+        JreConcurrency _jreConcurrency = new JreConcurrency();
+        return Stores.<String, Object>enforceAsynchronousPut(10, _jreConcurrency, 
+          Stores.<String, Object>hashMap());
+      }
+    };
+    StoreTests.testAndStartAndStop(_function);
   }
 }

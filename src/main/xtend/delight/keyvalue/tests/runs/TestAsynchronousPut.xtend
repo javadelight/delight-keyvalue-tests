@@ -10,7 +10,7 @@ class TestAsynchronousPut {
 	def void test() {
 		StoreTests.testAndStartAndStop [
 			 Stores.enforceAsynchronousPut(10, new JreConcurrency(),
-			Stores.hashMap);
+			Stores.<String, Object> hashMap);
 		]
 	}
 }

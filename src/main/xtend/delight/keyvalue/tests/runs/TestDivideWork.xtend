@@ -7,10 +7,11 @@ import org.junit.Test
 
 class TestDivideWork {
 	
+	
 	@Test
 	def void test() {
 		StoreTests.testAndStartAndStop [
-			StoresJre.divideWork(4, Stores.hashMap)
+			StoresJre.divideWork(4, Stores.<String, Object> hashMap)
 		]
 	}
 	
