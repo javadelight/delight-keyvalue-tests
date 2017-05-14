@@ -2,6 +2,7 @@ package delight.keyvalue.tests;
 
 import delight.async.AsyncCommon;
 import delight.async.Operation;
+import delight.async.callbacks.SimpleCallback;
 import delight.async.callbacks.ValueCallback;
 import delight.async.jre.Async;
 import delight.keyvalue.Store;
@@ -15,14 +16,16 @@ public class DefPut implements StoreTest {
     final Operation<Object> _function = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
-        map.put("1", "one", AsyncCommon.<Object>asSimpleCallback(callback));
+        SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
+        map.put("1", "one", _asSimpleCallback);
       }
     };
     Async.<Object>waitFor(_function);
     final Operation<Object> _function_1 = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
-        map.put("2", "two", AsyncCommon.<Object>asSimpleCallback(callback));
+        SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
+        map.put("2", "two", _asSimpleCallback);
       }
     };
     Async.<Object>waitFor(_function_1);

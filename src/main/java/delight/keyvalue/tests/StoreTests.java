@@ -2,6 +2,7 @@ package delight.keyvalue.tests;
 
 import delight.async.AsyncCommon;
 import delight.async.Operation;
+import delight.async.callbacks.SimpleCallback;
 import delight.async.callbacks.ValueCallback;
 import delight.async.jre.Async;
 import delight.functional.Function;
@@ -24,7 +25,8 @@ public class StoreTests {
         final Operation<Object> _function = new Operation<Object>() {
           @Override
           public void apply(final ValueCallback<Object> callback) {
-            store.start(AsyncCommon.<Object>asSimpleCallback(callback));
+            SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
+            store.start(_asSimpleCallback);
           }
         };
         Async.<Object>waitFor(_function);
@@ -32,7 +34,8 @@ public class StoreTests {
         final Operation<Object> _function_1 = new Operation<Object>() {
           @Override
           public void apply(final ValueCallback<Object> callback) {
-            store.stop(AsyncCommon.<Object>asSimpleCallback(callback));
+            SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
+            store.stop(_asSimpleCallback);
           }
         };
         Async.<Object>waitFor(_function_1);

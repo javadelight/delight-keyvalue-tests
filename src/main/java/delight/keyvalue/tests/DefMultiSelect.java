@@ -2,11 +2,13 @@ package delight.keyvalue.tests;
 
 import delight.async.AsyncCommon;
 import delight.async.Operation;
+import delight.async.callbacks.SimpleCallback;
 import delight.async.callbacks.ValueCallback;
 import delight.async.jre.Async;
 import delight.functional.Closure;
 import delight.functional.Success;
 import delight.keyvalue.Store;
+import delight.keyvalue.operations.StoreOperation;
 import delight.keyvalue.operations.StoreOperations;
 import delight.keyvalue.tests.StoreTest;
 import java.util.List;
@@ -18,27 +20,31 @@ public class DefMultiSelect implements StoreTest {
     final Operation<Object> _function = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
-        store.put("node/child1", "one", AsyncCommon.<Object>asSimpleCallback(callback));
+        SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
+        store.put("node/child1", "one", _asSimpleCallback);
       }
     };
     Async.<Object>waitFor(_function);
     final Operation<Object> _function_1 = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
-        store.put("node/child2", "two", AsyncCommon.<Object>asSimpleCallback(callback));
+        SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
+        store.put("node/child2", "two", _asSimpleCallback);
       }
     };
     Async.<Object>waitFor(_function_1);
     final Operation<Object> _function_2 = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
-        store.put("node/child3", "three", AsyncCommon.<Object>asSimpleCallback(callback));
+        SimpleCallback _asSimpleCallback = AsyncCommon.<Object>asSimpleCallback(callback);
+        store.put("node/child3", "three", _asSimpleCallback);
       }
     };
     Async.<Object>waitFor(_function_2);
     final Operation<Object> _function_3 = new Operation<Object>() {
       @Override
       public void apply(final ValueCallback<Object> callback) {
+        StoreOperation<String, Object> _all = StoreOperations.<String, Object>getAll("node/", 0, 100);
         final Closure<Object> _function = new Closure<Object>() {
           @Override
           public void apply(final Object res) {
@@ -54,8 +60,8 @@ public class DefMultiSelect implements StoreTest {
             callback.onSuccess(Success.INSTANCE);
           }
         };
-        store.performOperation(StoreOperations.<String, Object>getAll("node/", 0, 100), 
-          AsyncCommon.<Object>embed(callback, _function));
+        ValueCallback<Object> _embed = AsyncCommon.<Object>embed(callback, _function);
+        store.performOperation(_all, _embed);
       }
     };
     Async.<Object>waitFor(_function_3);

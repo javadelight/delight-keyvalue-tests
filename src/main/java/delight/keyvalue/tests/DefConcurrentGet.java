@@ -27,7 +27,8 @@ public class DefConcurrentGet implements StoreTest {
             @Override
             public void run() {
               store.getSync("1");
-              col.createCallback().onSuccess(Success.INSTANCE);
+              ValueCallback<Success> _createCallback = col.createCallback();
+              _createCallback.onSuccess(Success.INSTANCE);
             }
           }.start();
         }
