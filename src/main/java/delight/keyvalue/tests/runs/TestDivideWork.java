@@ -14,8 +14,7 @@ public class TestDivideWork {
     final Function<Void, Store<String, Object>> _function = new Function<Void, Store<String, Object>>() {
       @Override
       public Store<String, Object> apply(final Void it) {
-        Store<String, Object> _hashMap = Stores.<String, Object>hashMap();
-        return StoresJre.<String, Object>divideWork(4, _hashMap);
+        return StoresJre.<String, Object>divideWork(4, Stores.<String, Object>hashMap());
       }
     };
     StoreTests.testAndStartAndStop(_function);

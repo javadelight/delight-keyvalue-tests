@@ -15,8 +15,8 @@ public class TestAsynchronousPut {
       @Override
       public Store<String, Object> apply(final Void it) {
         JreConcurrency _jreConcurrency = new JreConcurrency();
-        Store<String, Object> _hashMap = Stores.<String, Object>hashMap();
-        return Stores.<String, Object>enforceAsynchronousPut(10, _jreConcurrency, _hashMap);
+        return Stores.<String, Object>enforceAsynchronousPut(10, _jreConcurrency, 
+          Stores.<String, Object>hashMap());
       }
     };
     StoreTests.testAndStartAndStop(_function);

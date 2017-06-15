@@ -28,8 +28,7 @@ public class DefConcurrentGetDifferentQuery implements StoreTest {
             @Override
             public void run() {
               store.getSync(("" + i));
-              ValueCallback<Success> _createCallback = col.createCallback();
-              _createCallback.onSuccess(Success.INSTANCE);
+              col.createCallback().onSuccess(Success.INSTANCE);
             }
           }.start();
         }
